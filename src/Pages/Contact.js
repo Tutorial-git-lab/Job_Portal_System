@@ -1,10 +1,9 @@
 import axios from "axios";
-
 import React, { useEffect, useState } from "react";
 
 const Contact = () => {
   const [id, setId] = useState();
-  const [user, setuser] = useState([]);
+  const [user, setUser] = useState();
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [mobile, setMobile] = useState();
@@ -16,7 +15,7 @@ const Contact = () => {
       .get("https://localhost:7053/api/Contact/GetAllContacts")
       .then((response) => {
         console.log(response.data); // Log the response data
-        setuser(response.data); // Set the state with the array data
+        setUser(response.data); // Set the state with the array data
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -52,6 +51,7 @@ const Contact = () => {
         })
         .then((result) => {
           alert("Data Added");
+          console.log(result);
           window.location.reload();
         })
         .catch((error) => {
@@ -74,12 +74,12 @@ const Contact = () => {
         console.log(error);
       });
   };
-  const EditData = (dataedit) => {
-    setId(dataedit.id);
-    setName(dataedit.Name);
-    setEmail(dataedit.Email);
-    setMobile(dataedit.Mobile);
-    setMessage(dataedit.Message);
+  const EditData = (dataEdit) => {
+    setId(dataEdit.id);
+    setName(dataEdit.Name);
+    setEmail(dataEdit.Email);
+    setMobile(dataEdit.Mobile);
+    setMessage(dataEdit.Message);
     setBtnchange("saveChange");
   };
 
